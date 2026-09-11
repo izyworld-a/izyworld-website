@@ -19,6 +19,7 @@ izyworld-website/
 ├── about.html            ← ABOUT PAGE (story, mission, vision, values)
 ├── services.html         ← SERVICES PAGE (the 6 service lines, detailed)
 ├── contact.html          ← CONTACT PAGE (enquiry form + contact details)
+├── portfolio.html        ← OUR WORK PAGE (the portfolio — real projects)
 │
 ├── css/                  ← ALL STYLES (how the site looks)
 │   ├── variables.css     ←   brand colors & measurements (edit colors HERE)
@@ -29,6 +30,7 @@ izyworld-website/
 │
 ├── assets/               ← IMAGES
 │   ├── izy-logo.png      ←   the master logo
+│   └── portfolio/         ←   project showcase images
 │   ├── favicon-32.png    ←   browser tab icon
 │   └── apple-touch-icon.png
 │
@@ -44,7 +46,7 @@ Think of a website like a human being:
 
 | Language | Role | File(s) |
 |----------|------|---------|
-| **HTML** | The **skeleton** — every heading, paragraph, button | `index.html`, `about.html`, `services.html`, `contact.html` |
+| **HTML** | The **skeleton** — every heading, paragraph, button | `index.html`, `about.html`, `services.html`, `contact.html`, `portfolio.html` |
 | **CSS**  | The **appearance** — colors, spacing, layout | `css/variables.css`, `css/main.css` |
 | **JS**   | The **behavior** — menus, animations, form checking | `js/main.js` |
 

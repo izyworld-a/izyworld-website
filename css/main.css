@@ -682,3 +682,103 @@ img {
     padding: 40px 24px;
   }
 }
+
+/* ---------- 14. PORTFOLIO / "OUR WORK" PAGE ---------- */
+/* Project cards: like .card, but with an optional image on top,
+   a badge, tag pills and links. Text-only cards simply skip
+   the .project-media image — the layout adapts. */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--izy-white);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+  overflow: hidden;             /* makes the image respect the card's rounded corners */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(10, 15, 36, 0.10);
+}
+
+.project-media {
+  aspect-ratio: 16 / 10;       /* every image gets the same height */
+  object-fit: cover;           /* image fills the box without stretching */
+  width: 100%;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.project-body {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;                     /* body stretches so all cards end evenly */
+}
+
+.project-badge {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--izy-primary);
+  background: var(--izy-primary-soft);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.project-card h3 {
+  color: var(--izy-navy);
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.project-card p {
+  font-size: 0.94rem;
+  color: var(--izy-text-muted);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--izy-slate);
+  background: var(--izy-surface);
+  border: 1px solid #E2E8F0;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.project-links {
+  margin-top: auto;            /* links always sit at the bottom of the card */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.project-links a {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--izy-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--izy-primary-soft);
+  transition: border-color 0.2s;
+}
+
+.project-links a:hover {
+  border-color: var(--izy-primary);
+}
