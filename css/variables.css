@@ -1,0 +1,32 @@
+/* ============================================================
+   IZYWORLD GLOBAL LIMITED — BRAND DESIGN TOKENS
+   ------------------------------------------------------------
+   This file holds ALL the brand colors of Izyworld in ONE place.
+   When you want to change a color, change it HERE only —
+   every other CSS file uses these variables, so the whole
+   website updates automatically.
+
+   Source of truth: IZYWORLD-CORPORATE-ASSETS/01_BRAND-IDENTITY/
+                    Color Palette/izyrootcolor.css (Google Drive)
+   ============================================================ */
+
+:root {
+  /* ---- CORE BRAND COLORS ---- */
+  --izy-primary: #2563EB;    /* Izyworld Blue  — main buttons, links  */
+  --izy-secondary: #4F46E5;  /* Izyworld Indigo — gradients, accents   */
+  --izy-accent: #06B6D4;     /* Izyworld Cyan   — small highlights    */
+  --izy-navy: #0A0F24;       /* Izyworld Navy   — dark sections       */
+  --izy-slate: #334155;      /* Izyworld Slate  — body text on light  */
+  --izy-surface: #F8FAFC;    /* Izyworld Surface — page background   */
+
+  /* ---- DERIVED SHADES (light/dark versions of the core colors) ---- */
+  --izy-primary-dark: #1D4ED8;   /* darker blue for button hover states */
+  --izy-primary-soft: #DBEAFE;   /* very light blue for soft backgrounds */
+  --izy-white: #FFFFFF;
+  --izy-text-muted: #64748B;     /* light gray for secondary text */
+
+  /* ---- LAYOUT MEASUREMENTS ---- */
+  --radius: 12px;          /* how rounded the corners of cards are */
+  --section-gap: 96px;     /* vertical space between page sections */
+  --container: 1150px;     /* maximum width of the page content */
+}

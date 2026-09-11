@@ -1,0 +1,684 @@
+/* ============================================================
+   IZYWORLD GLOBAL LIMITED — MAIN STYLESHEET
+   ------------------------------------------------------------
+   HOW THIS FILE IS ORGANIZED
+   Read top to bottom — it follows the page from top (header)
+   to bottom (footer):
+     1. RESET        – removes default browser spacing
+     2. BASE         – global text, colors, containers
+     3. HEADER       – the top bar + navigation menu
+     4. HERO         – the big first section on the home page
+     5. BUTTONS      – reusable button styles
+     6. SECTIONS     – headings + section spacing
+     7. CARDS        – grids of cards (services, values)
+     8. ABOUT PAGE   – mission/vision blocks, stats
+     9. CONTACT PAGE – form + contact info
+    10. FOOTER       – the bottom of every page
+    11. UTILITIES   – small reusable helpers
+    12. ANIMATIONS  – the "reveal on scroll" effect
+    13. RESPONSIVE  – adjustments for phones and tablets
+
+   Every color comes from variables.css — never type a raw
+   color code here. That keeps the brand consistent.
+   ============================================================ */
+
+/* ---------- 1. RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding no longer widens boxes */
+}
+
+/* ---------- 2. BASE ---------- */
+html {
+  scroll-behavior: smooth; /* clicking links glides instead of jumping */
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--izy-surface);
+  color: var(--izy-slate);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%; /* images never break out of their container */
+  display: block;
+}
+
+/* .container centers all page content and caps its width */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- 3. HEADER ---------- */
+.site-header {
+  position: sticky;  /* the header stays visible when you scroll */
+  top: 0;
+  z-index: 100;
+  background: var(--izy-white);
+  border-bottom: 1px solid #E2E8F0;
+  transition: box-shadow 0.3s ease;
+}
+
+/* this class is added by js/main.js when the page is scrolled */
+.site-header.scrolled {
+  box-shadow: 0 4px 20px rgba(10, 15, 36, 0.08);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 24px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 44px;
+  width: auto;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--izy-navy);
+  line-height: 1.1;
+}
+
+.brand-name span {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--izy-primary);
+  text-transform: uppercase;
+}
+
+/* the desktop menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--izy-slate);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-menu a:hover {
+  color: var(--izy-primary);
+  background: var(--izy-primary-soft);
+}
+
+/* the menu link of the page you are currently on */
+.nav-menu a.active {
+  color: var(--izy-primary);
+  font-weight: 600;
+}
+
+/* hamburger button — hidden on desktop, shown on phones (see part 13) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--izy-navy);
+}
+
+/* ---------- 4. HERO ---------- */
+.hero {
+  background:
+    radial-gradient(900px 400px at 85% -10%, rgba(6, 182, 212, 0.25), transparent 60%),
+    radial-gradient(700px 500px at 10% 110%, rgba(79, 70, 229, 0.35), transparent 60%),
+    var(--izy-navy);
+  color: var(--izy-white);
+  padding: 110px 0;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--izy-accent);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 999px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  background: rgba(6, 182, 212, 0.08);
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem); /* grows on bigger screens */
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--izy-primary), var(--izy-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 1.12rem;
+  color: #CBD5E1;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+/* ---------- 5. BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--izy-primary), var(--izy-secondary));
+  color: var(--izy-white);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45);
+}
+
+/* outline version — used inside dark sections */
+.btn-outline {
+  background: transparent;
+  color: var(--izy-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline:hover {
+  border-color: var(--izy-accent);
+  color: var(--izy-accent);
+}
+
+/* light outline version — used on light backgrounds */
+.btn-light-outline {
+  background: transparent;
+  color: var(--izy-primary);
+  border: 1.5px solid var(--izy-primary);
+}
+
+.btn-light-outline:hover {
+  background: var(--izy-primary-soft);
+}
+
+/* ---------- 6. SECTIONS ---------- */
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section.alt {
+  background: var(--izy-white); /* alternating strip for rhythm */
+}
+
+.section-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--izy-primary);
+  margin-bottom: 10px;
+}
+
+.section h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--izy-navy);
+  letter-spacing: -0.3px;
+  margin-bottom: 14px;
+}
+
+.section-lead {
+  max-width: 640px;
+  color: var(--izy-text-muted);
+  margin-bottom: 48px;
+}
+
+/* ---------- 7. CARDS (services, values) ---------- */
+.card-grid {
+  display: grid;
+  /* auto-fit = as many columns as fit; each card is at least 300px wide */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--izy-white);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.section.alt .card {
+  background: var(--izy-surface);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(10, 15, 36, 0.10);
+}
+
+.card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--izy-primary-soft);
+  color: var(--izy-primary);
+  margin-bottom: 18px;
+}
+
+.card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card h3 {
+  color: var(--izy-navy);
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.94rem;
+  color: var(--izy-text-muted);
+}
+
+/* ---------- 8. ABOUT PAGE ---------- */
+.mv-block {
+  background: var(--izy-white);
+  border-left: 4px solid var(--izy-primary);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  box-shadow: 0 4px 20px rgba(10, 15, 36, 0.05);
+}
+
+.mv-block h3 {
+  color: var(--izy-primary);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.mv-block p {
+  color: var(--izy-slate);
+  font-size: 1.02rem;
+}
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.stat {
+  text-align: center;
+  padding: 28px 16px;
+  border-radius: var(--radius);
+  background: var(--izy-navy);
+  color: var(--izy-white);
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--izy-accent);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #94A3B8;
+}
+
+/* page banner used on inner pages (smaller than the home hero) */
+.page-banner {
+  background:
+    radial-gradient(700px 300px at 90% 0%, rgba(6, 182, 212, 0.22), transparent 60%),
+    var(--izy-navy);
+  color: var(--izy-white);
+  padding: 72px 0;
+}
+
+.page-banner h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-banner p {
+  color: #CBD5E1;
+  max-width: 620px;
+}
+
+/* the "what we believe" value cards reuse .card — this adds the icon tint */
+.value-card .card-icon {
+  background: rgba(6, 182, 212, 0.12);
+  color: var(--izy-accent);
+}
+
+/* ---------- 9. CONTACT PAGE ---------- */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-form {
+  background: var(--izy-white);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--izy-navy);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--izy-surface);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--izy-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* red border shown when js/main.js finds invalid input */
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: #EF4444;
+}
+
+.error-msg {
+  display: none; /* hidden until JavaScript shows it */
+  color: #DC2626;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+.contact-info-card {
+  background: var(--izy-navy);
+  color: var(--izy-white);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.contact-info-card h3 {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.contact-line {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+  color: #CBD5E1;
+}
+
+.contact-line svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--izy-accent);
+}
+
+/* ---------- 10. FOOTER ---------- */
+.site-footer {
+  background: var(--izy-navy);
+  color: #94A3B8;
+  padding: 56px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-brand img {
+  height: 48px;
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  max-width: 340px;
+}
+
+.footer h4 {
+  color: var(--izy-white);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links a {
+  display: block;
+  color: #94A3B8;
+  text-decoration: none;
+  font-size: 0.92rem;
+  padding: 5px 0;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--izy-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 0;
+  font-size: 0.82rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+/* ---------- 11. UTILITIES ---------- */
+.text-center {
+  text-align: center;
+}
+
+.cta-band {
+  background:
+    radial-gradient(600px 300px at 50% 120%, rgba(6, 182, 212, 0.3), transparent 65%),
+    linear-gradient(90deg, var(--izy-primary), var(--izy-secondary));
+  color: var(--izy-white);
+  border-radius: 20px;
+  padding: 56px 48px;
+  text-align: center;
+}
+
+.cta-band h2 {
+  color: var(--izy-white);
+  margin-bottom: 10px;
+}
+
+.cta-band p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--izy-primary);
+  color: var(--izy-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+  opacity: 0;               /* hidden by default */
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- 12. ANIMATIONS ---------- */
+/* Elements with .reveal start invisible and slide up
+   when they enter the screen (js/main.js handles when). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 13. RESPONSIVE (phones & tablets) ---------- */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: block; /* show the hamburger */
+  }
+
+  /* the menu becomes a dropdown panel under the header */
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--izy-white);
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: 0 16px 30px rgba(10, 15, 36, 0.12);
+    padding: 10px 16px 18px;
+  }
+
+  .nav-menu.open {
+    display: flex; /* toggled by js/main.js */
+  }
+
+  .nav-menu a {
+    padding: 13px 14px;
+    border-radius: 8px;
+  }
+
+  .hero {
+    padding: 72px 0;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr; /* stack the form above the info */
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .cta-band {
+    padding: 40px 24px;
+  }
+}
