@@ -1,0 +1,15 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: izyworld-web
+    restart: on-failure
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/index.html"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
